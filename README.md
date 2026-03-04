@@ -1,92 +1,142 @@
-⚓ Sea of Code - Batalla Naval
+# ⚓ SEA OF CODE — Batalla Naval en Python
 
-<div align="center">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Python-3.x-3776AB%3Fstyle%3Dfor-the-badge%26logo%3Dpython%26logoColor%3Dwhite" alt="Python Badge">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Status-MVP%2520Finalizado-success%3Fstyle%3Dfor-the-badge" alt="Status Badge">
+> *< Code. Aim. Fire. />*
 
+Juego de **Batalla Naval por consola** desarrollado en Python como proyecto académico para la asignatura de Programación (G02) — Universidad Autónoma de Occidente, 2026.
 
+---
 
+## 🎮 ¿De qué trata?
 
+Tú y la máquina se enfrentan en alta mar. Cada uno esconde **3 barcos** en un tablero de **5×5**. Por turnos se lanzan ataques hasta que alguien hunda los 3 barcos del rival. ¡El primero en lograrlo gana!
 
-<strong>"< Code. Aim. Fire. />"</strong>
-</div>
+---
 
-🌊 Acerca del Proyecto
+## 🖥️ Vista previa
 
-Sea of Code es un Producto Mínimo Viable (MVP) desarrollado como un desafío de programación para jóvenes de entre 17 y 19 años. El objetivo es transformar a los usuarios de simples consumidores de tecnología en desarrolladores, utilizando el clásico juego de Batalla Naval como vehículo de aprendizaje en Python.
+```
+╔══════════════════════════════════════════════════════╗
+║                                                      ║
+║        ⚓     S E A   O F  C O D E     ⚓           ║
+║                       5×5                            ║
+║                                                      ║
+╚══════════════════════════════════════════════════════╝
 
-Este proyecto resuelve la falta de recursos interactivos que permitan analizar lógica de programación de forma sencilla y visual en la terminal.
+   A   B   C   D   E
+1  0   0   0   0   1
+2  0   0   0   0   0
+3  0   1   0   0   0
+4  0   0   0   1   0
+5  0   0   0   0   0
+```
 
-🚀 Características Técnicas (Alcances)
+---
 
-Interfaz Colorida: Implementación de colores ANSI para una experiencia visual inmersiva en consola.
+## 🚀 Cómo ejecutar
 
-Lógica de Matrices: Gestión de tableros de $5 \times 5$ mediante listas de listas.
+### Requisitos
+- Python 3.7 o superior
+- Jupyter Notebook (opcional, para el `.ipynb`)
 
-Validación Robusta: Sistema que previene errores por coordenadas fuera de rango o entradas de texto inválidas mediante manejo de excepciones (try-except).
+### Opción 1 — Jupyter Notebook
+```bash
+jupyter notebook BattleShip.ipynb
+```
+Ejecuta todas las celdas en orden y luego corre la última celda que llama a `main()`.
 
-Oponente Automatizado: Un bot que posiciona barcos y realiza ataques de forma aleatoria.
+### Opción 2 — Terminal (si exportas a `.py`)
+```bash
+python battleship.py
+```
 
-Detección de Estados: Manejo automático de victorias, derrotas y empates técnicos.
+> ⚠️ El juego usa colores ANSI. Se ve mejor en terminales como PowerShell, bash, zsh o la terminal integrada de VS Code.
 
-🛠️ Requisitos e Instalación
+---
 
-Para ejecutar este proyecto, necesitas tener instalado Python 3.x.
+## 🕹️ Instrucciones del juego
 
-Clona este repositorio:
+### 1. Tablero
+- Cuadrícula de **5 filas × 5 columnas**
+- Filas: números del **1 al 5**
+- Columnas: letras de la **A a la E**
+- Ejemplo de coordenada: `3C` = fila 3, columna C
 
-git clone [https://github.com/tu-usuario/sea-of-code.git](https://github.com/tu-usuario/sea-of-code.git)
+### 2. Fase de despliegue
+- Coloca tus **3 barcos** uno por uno ingresando fila y columna
+- No puedes repetir posiciones
+- La máquina coloca sus barcos en secreto, de forma aleatoria
 
+### 3. Batalla
+- Cada ronda: **primero atacas tú**, luego la máquina
+- Ingresa las coordenadas de la casilla que quieres atacar
+- No puedes atacar dos veces la misma casilla
 
-Navega a la carpeta del proyecto:
+### 4. Leyenda del tablero
 
-cd sea-of-code
+| Símbolo | Significado |
+|---------|-------------|
+| `0` | Casilla sin explorar |
+| `1` | Barco propio en pie |
+| `X` | Barco hundido / impacto recibido |
+| `-` | Disparo fallido (agua) |
 
+### 5. Fin de la partida
+- Gana quien hunda los **3 barcos** del contrincante primero
+- Si ambos hunden el tercero en la misma ronda → **¡Empate!**
+- Al final se muestran ambos tableros con el resumen completo
 
-Ejecuta el archivo de Python o abre el Notebook:
+---
 
-python BattleShip.py
-# O abre BattleShip.ipynb en Jupyter Notebook/Google Colab
+## 🧩 Estructura del código
 
+El proyecto está organizado en **7 funciones**:
 
-🎮 Instrucciones de Juego
+| Función | Descripción |
+|--------|-------------|
+| `col_a_indice(letra)` | Convierte una letra (A–E) en su índice numérico (0–4) |
+| `pedir_coordenadas(mensaje)` | Solicita y valida fila + columna al usuario |
+| `imprimir_tablero(tablero, titulo)` | Muestra el tablero con formato visual en consola |
+| `barcos_usuario()` | Permite al jugador colocar sus 3 barcos |
+| `barcos_bot()` | Coloca aleatoriamente los 3 barcos de la máquina |
+| `ataque_bot(barcos_atk_bot, tablero_usuario)` | Gestiona el ataque aleatorio de la máquina |
+| `ataque_usu(barcos_atk_usu, tablero_maquina, tablero_visual_bot)` | Gestiona el ataque del jugador |
+| `main()` | Función principal: orquesta el flujo completo del juego |
 
-Fase de Despliegue: Introduce las coordenadas para tus 3 barcos. Las filas van del 1 al 5 y las columnas de la A a la E.
+---
 
-Fase de Combate: En cada turno, indica la coordenada de ataque.
+## 📁 Archivos del repositorio
 
-X: Impacto exitoso.
+```
+📦 Proyecto-Sea-of-code
+ ┣ 📓 BattleShip.ipynb      # Notebook principal con el código completo
+ ┣ 📄 Sea_of_code.pdf       # Informe del proyecto (análisis, diseño, pruebas)
+ ┗ 📄 README.md             # Este archivo
+```
 
--: El disparo cayó en el agua.
+---
 
-1: Tu barco (en tu tablero).
+## 👥 Equipo — Startup Sea of Code
 
-Victoria: ¡Hunde los 3 barcos de la máquina para ganar!
+| Nombre | GitHub |
+|--------|--------|
+| Nicolás Armero Rosero | [@Nico08ben](https://github.com/Nico08ben) |
+| Sara Mesa Lenis | — |
+| Karen Juliana Dueñas Castro | — |
+| Santiago Garcia | [@Sant1833](https://github.com/Sant1833) |
 
-⚠️ Limitaciones Identificadas
+---
 
-Como todo MVP, el sistema cuenta con áreas de mejora:
+## 🏫 Información académica
 
-IA Básica: La máquina ataca de forma puramente aleatoria sin seguir patrones de búsqueda tras un impacto.
+- **Universidad:** Autónoma de Occidente
+- **Facultad:** Ingeniería y Ciencias Básicas
+- **Programa:** Ingeniería de Datos e Inteligencia Artificial
+- **Asignatura:** Programación (G02)
+- **Tutor:** Breyner Posso Bautista
+- **Fecha:** Febrero – Marzo 2026
 
-Unidades Fijas: Los barcos son de $1 \times 1$; no hay embarcaciones de mayor tamaño o formas complejas.
+---
 
-Modo Local: No cuenta con funcionalidades de red (multijugador online).
+## 📄 Licencia
 
-👥 Equipo de Desarrollo
-
-Proyecto desarrollado para la asignatura de Programación (G02) en la Universidad Autónoma de Occidente.
-
-Nicolas Armero Rosero
-
-Sara Mesa Lenis
-
-Karen Juliana Dueñas Castro
-
-Santiago Garcia
-
-Tutor: Breyner Posso Bautista
-
-Facultad: Ingeniería y Ciencias Básicas
-
-<p align="center">Desarrollado en Cali, Colombia 🇨🇴 - 2026</p>
+Proyecto académico de uso educativo. © 2026 Sea of Code Team — UAO.
