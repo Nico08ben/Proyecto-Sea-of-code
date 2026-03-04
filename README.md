@@ -40,13 +40,13 @@ Tú y la máquina se enfrentan en alta mar. Cada uno esconde **3 barcos** en un 
 
 ### Opción 1 — Jupyter Notebook
 ```bash
-jupyter notebook BattleShip.ipynb
+jupyter notebook Sea_of_code.ipynb
 ```
 Ejecuta todas las celdas en orden y luego corre la última celda que llama a `main()`.
 
 ### Opción 2 — Terminal (si exportas a `.py`)
 ```bash
-python battleship.py
+python Sea_of_code.py
 ```
 
 > ⚠️ El juego usa colores ANSI. Se ve mejor en terminales como PowerShell, bash, zsh o la terminal integrada de VS Code.
@@ -120,8 +120,8 @@ El proyecto está organizado en **7 funciones**:
 | Nombre | GitHub |
 |--------|--------|
 | Nicolás Armero Rosero | [@Nico08ben](https://github.com/Nico08ben) |
-| Sara Mesa Lenis | — |
-| Karen Juliana Dueñas Castro | — |
+| Sara Mesa Lenis | [@saramesal](https://github.com/saramesal)|
+| Karen Juliana Dueñas Castro | [@karen11439](https://github.com/karen11439) |
 | Santiago Garcia | [@Sant1833](https://github.com/Sant1833) |
 
 ---
